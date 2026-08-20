@@ -1,5 +1,9 @@
 span{
+<<<<<<< HEAD
     color: gray;
+=======
+    color: rgb(241, 9, 9);
+>>>>>>> e9c1e9ed2430572bc59fade453d6c0d4fa9e50c3
 }
 .cls{
     color: blue;

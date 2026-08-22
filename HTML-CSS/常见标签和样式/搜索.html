@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 搜索表单样式（弹性布局） */
+        .search-form{
+            display: flex;
+            /* 水平方向布局 */
+            flex-direction: row;
+            /* 居中 */
+            align-items: center;
+            gap:10px; /*控件之间距离*/
+            margin: 10px;
+        }
+
+        /* 给.search-form的文本输入框和下拉选项框设置样式 */
+        .search-form input[type="text"],.search-form select{
+            padding: 5px;
+            width: 150px;
+        }
+
+    </style>
+</head>
+<body>
+    <form class="search-form" action="/search" method="post">
+        <!-- label 提高用户体验用的，for="name"关联id="name"的输入框 -->
+        <label for="name">姓名：</label> 
+        <input type="text" id="name" name="name" placeholder="请输入姓名">
+        
+        <label for="gender">性别：</label>
+        <input type="radio" id="gender" name="gender" value="1">男
+        <input type="radio" id="gender" name="gender" value="2">女
+    
+        
+
+        <label for="position">岗位：</label>
+        <select name="position" id="position">
+            <option value=""></option>
+            <option value="1">前端</option>
+            <option value="2">后端</option>
+            <option value="3">测试</option>
+        </select>
+
+        <button type="submit">搜索</button>
+        <button type="reset">重置</button>
+    </form>
+
+    
+</body>
+</html>

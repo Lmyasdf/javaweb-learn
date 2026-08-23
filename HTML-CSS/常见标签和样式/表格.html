@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="GBK">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            /* 合并表格边框，避免边框重复显示 */
+            border-collapse: collapse;
+            margin: 30px 0;
+            width: 100%;
+        }
+        th,td{
+            border: 1px solid black;
+            padding: 10px 0;
+        }
+        .footer{
+            background-color: #b5b3b3;
+            /* color 文字颜色 */
+            color:white;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+        #container{
+            width: 80%;
+            margin: 0 auto; /* 水平居中 */
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <table>
+            <!-- 表头 -->
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <!-- 表格主体 -->
+            <tbody>
+                <tr>
+                    <td>张三</td>
+                    <td>18</td>
+                    <td>男</td>
+                    <td class="action">
+                        <button type="button">编辑</button>
+                        <button type="button">删除</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <!-- td定义普通单元格，th定义表头单元格 -->
+                    <td>李四</td>
+                    <td>19</td>
+                    <td>女</td>
+                    <td class="action">
+                        <button type="button">编辑</button>
+                        <button type="button">删除</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <footer class="footer">
+            <p>江苏传智博客教育科技股份有限公司</p>
+            <p>版权所有 Copyright 2006-2024 All Rights Reserved </p>
+        </footer>
+    </div>
+
+</body>
+</html>

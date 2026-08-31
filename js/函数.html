@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-函数</title>
+</head>
+<body>
+    <script>
+        //1.函数的定义
+        //js是弱类型语言，函数的参数和返回值可以是任意类型
+        //具名函数
+        function add(a,b){
+            return a+b;
+        }
+        //匿名函数
+        let sum = function(a,b){
+            return a+b;
+        }
+        let sum2 = (a,b) => {
+            return a+b;
+        }
+        //2.函数的调用
+        alert(add(10,20.9));
+        console.log(sum(1,2));
+        console.log(sum2(3,4));
+    </script>
+</body>
+</html>

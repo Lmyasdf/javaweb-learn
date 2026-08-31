@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-DOM</title>
+</head>
+<body>
+    <h1 id="title">11111</h1>
+    <h1>22222</h1>
+    <h1>33333</h1>
+
+    <script>
+        //修改第一个h1标签的文本内容
+        //1.获取元素
+        let h1 = document.querySelector('h1');//'#title'
+
+        let hs = document.querySelectorAll('h1');
+        //2.操作元素
+        h1.innerHTML = 'JS-DOM';
+        hs[1].innerHTML = 'JS-DOM-2';
+    </script>
+</body>
+</html>

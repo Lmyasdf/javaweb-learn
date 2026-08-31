@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-自定义对象</title>
+</head>
+<body>
+    <script>
+        //1.自定义对象
+        let student = {
+            name: '张三',
+            age: 18,
+            sex: '男',
+            /* sing: function(){
+                alert(this.name + '在唱歌');
+            } */
+            sing(){
+                alert(this.name + '在唱歌');
+            }
+        }
+        //2.对象的调用
+        alert(student.name);
+        student.sing();
+
+        //3.JSON-JS对象标记法
+        //将对象转换为JSON字符串
+        alert(JSON.stringify(student));
+
+        let Json = '{"name":"张三","age":18,"sex":"男"}'
+        alert(JSON.parse(Json).name);
+    </script>
+</body>
+</html>

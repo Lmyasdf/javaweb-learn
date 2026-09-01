@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue常用指令: v-for</title>
+    <style>
+        table{
+            /* 合并表格边框，避免边框重复显示 */
+            border-collapse: collapse;
+            margin: 30px auto;
+            width: 50%;
+        }
+        th,td{
+            border: 1px solid #000;
+            padding: 10px;
+        }
+        th{
+            background-color: #bdbbbb;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr v-for="(e, index) in empList" :key="e.id">
+                    <td>{{index+1}}</td>
+                    <td>{{e.name}}</td>
+                    <td>{{e.age}}</td>
+                    <td>{{e.gender==1?'男':'女'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <script type="module">
+        import {createApp} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+        //创建vue实例
+        createApp({
+            data() {
+                return {
+                    empList: [
+                        {id:1,name:'张三',age:25,gender:1},
+                        {id:2,name:'李四',age:24,gender:2}
+                    ]
+                }
+            },
+        }).mount('#container')
+    
+    </script>
+</body>
+</html>

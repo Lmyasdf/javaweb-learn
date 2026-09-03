@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>vue常用指令: v-for</title>
     <style>
+        /* 设置搜索框和下拉框居中显示，按钮居中显示，框放大 */
+        input, select{
+            width: 210px;
+            height: 30px;
+            margin: 10px;
+        }   
+
+        button{
+            height: 30px;
+            margin: 10px;
+        }
+
+        #searchBox{
+            /* 弹性布局 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #bdbbbb;
+        }
+
+
         table{
             /* 合并表格边框，避免边框重复显示 */
             border-collapse: collapse;
             margin: 30px auto;
-            width: 50%;
+            width: 70%;
         }
         th,td{
             border: 1px solid #000;
@@ -21,7 +42,27 @@
     </style>
 </head>
 <body>
+    <br>
     <div id="container">
+        {{searchForm}}
+        <!-- 搜索框 -->
+        <span id="searchBox">
+            <input type="text" id="name" name="name" v-model="searchForm.name" placeholder="姓名">
+            <select id="gender" name="gender" v-model="searchForm.gender">
+                <option value="">请选择性别</option>
+                <option value="1">男</option>
+                <option value="2">女</option>
+            </select>
+            <select id="job" name="job" v-model="searchForm.job">
+                <option value="">请选择工作</option>
+                <option value="1">前端开发</option>
+                <option value="2">后端开发</option>
+                <option value="3">数据库开发</option>
+            </select>
+            <button id="btn" v-on:click="search">查询</button>
+            <button id="clearBtn" v-on:click="clear">清空</button>
+        </span>
+
         <table>
             <thead>
                 <tr>
@@ -29,6 +70,7 @@
                     <th>姓名</th>
                     <th>年龄</th>
                     <th>性别</th>
+                    <th>工作</th>
                 </tr>
             </thead>
             
@@ -38,6 +80,13 @@
                     <td>{{e.name}}</td>
                     <td>{{e.age}}</td>
                     <td>{{e.gender==1?'男':'女'}}</td>
+                    <span>
+                        <td v-if="e.job==1">前端开发</td>
+                        <td v-else-if="e.job==2">后端开发</td>
+                        <td v-else-if="e.job==3">数据库开发</td>
+                        <td v-else>未知</td>
+                    </span>
+                    
                 </tr>
             </tbody>
         </table>
@@ -51,11 +100,29 @@
             data() {
                 return {
                     empList: [
-                        {id:1,name:'张三',age:25,gender:1},
-                        {id:2,name:'李四',age:24,gender:2}
+                        {id:1,name:'张三',age:25,gender:1,job:1},
+                        {id:2,name:'李四',age:24,gender:2,job:2},
+                        {id:3,name:'王五',age:26,gender:1,job:3}
                     ]
+                    ,
+                    searchForm:{//封装用户输入的查询条件
+                        name:"",
+                        gender:"",
+                        job:""
+                    }
                 }
             },
+            methods:{
+                search(){
+                    console.log(this.searchForm);
+                },
+
+                clear(){
+                    this.searchForm.name="",
+                    this.searchForm.gender="",
+                    this.searchForm.job=""
+                },
+            }
         }).mount('#container')
     
     </script>

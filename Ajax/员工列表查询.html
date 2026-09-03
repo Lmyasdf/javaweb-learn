@@ -44,7 +44,6 @@
 <body>
     <br>
     <div id="container">
-        {{searchForm}}
         <!-- 搜索框 -->
         <span id="searchBox">
             <input type="text" id="name" name="name" v-model="searchForm.name" placeholder="姓名">
@@ -110,21 +109,30 @@
                 }
             },
             methods:{
-                search(){
-                    axios.get(`https://web-server.itheima.net/emps/list?name=${this.searchForm.name}&gender=${this.searchForm.gender}&job=${this.searchForm.job}`).then((result)=>{
-                        this.empList = result.data.data;
-                        console.log(result.data);
-                    })
+                async search(){
+                    //发送axios请求，获取数据
+                    let result = await axios.get(`https://web-server.itheima.net/emps/list?name=${this.searchForm.name}&gender=${this.searchForm.gender}&job=${this.searchForm.job}`)
+                    this.empList = result.data.data;
+                    console.log(result.data);
                 },
 
                 clear(){
                     this.searchForm.name="",
                     this.searchForm.gender="",
-                    this.searchForm.job=""
+                    this.searchForm.job="",
+                    this.search();
                 },
+            },
+
+            //生命周期-钩子函数 mounted
+            mounted(){//vue实例挂载完成后，获取数据
+                this.search();
             }
         }).mount('#container')
     
     </script>
 </body>
 </html>
+
+<!-- 本质是： 通过axios去后端服务器查询存储的搜索框数据，
+ 把查询到的数据放到表单中直接然后利用vue的v-for展示出来-->

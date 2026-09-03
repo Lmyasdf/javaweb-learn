@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios-入门</title>
+</head>
+<body>
+    <input type="button" value="获取数据GET" id="btnGet">
+    <input type="button" value="获取数据POST" id="btnPost">
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module">
+        //发送GET请求
+        document.querySelector('#btnGet').addEventListener('click',() => {
+            //axios发起异步请求
+            axios({
+                url: 'https://mock.apifox.cn/m1/3083103-0-default/emps/list',
+                method: 'GET'
+            }).then((result) => {  
+                console.log(result.data);
+            }).catch((err) => {
+                console.log(err);
+            })
+        })
+
+        document.querySelector('#btnPost').addEventListener('click',()=>{
+           /*  axios({
+                url: 'https://mock.apifox.cn/m1/3083103-0-default/emps/update',
+                method: 'POST',
+                data: 'id=1'
+            }).then((result)=>{
+                console.log(result.data);
+            }).then((err)=>{
+                console.log(err);
+            }) */
+
+            axios.post('https://mock.apifox.cn/m1/3083103-0-default/emps/update','id=1').then((result)=>{
+                console.log(result.data);
+            }).catch((err)=>{
+                console.log(err);
+            })
+        })
+
+
+    </script>
+</body>
+</html>

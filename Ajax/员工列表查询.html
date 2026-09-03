@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+    <style>
+        /* 设置搜索框和下拉框居中显示，按钮居中显示，框放大 */
+        input, select{
+            width: 210px;
+            height: 30px;
+            margin: 10px;
+        }   
+
+        button{
+            height: 30px;
+            margin: 10px;
+        }
+
+        #searchBox{
+            /* 弹性布局 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #bdbbbb;
+        }
+
+
+        table{
+            /* 合并表格边框，避免边框重复显示 */
+            border-collapse: collapse;
+            margin: 30px auto;
+            width: 70%;
+        }
+        th,td{
+            border: 1px solid #000;
+            padding: 10px;
+        }
+        th{
+            background-color: #bdbbbb;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <div id="container">
+        {{searchForm}}
+        <!-- 搜索框 -->
+        <span id="searchBox">
+            <input type="text" id="name" name="name" v-model="searchForm.name" placeholder="姓名">
+            <select id="gender" name="gender" v-model="searchForm.gender">
+                <option value="">请选择性别</option>
+                <option value="1">男</option>
+                <option value="2">女</option>
+            </select>
+            <select id="job" name="job" v-model="searchForm.job">
+                <option value="">请选择工作</option>
+                <option value="1">前端开发</option>
+                <option value="2">后端开发</option>
+                <option value="3">数据库开发</option>
+            </select>
+            <button id="btn" v-on:click="search">查询</button>
+            <button id="clearBtn" v-on:click="clear">清空</button>
+        </span>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>工作</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr v-for="(e, index) in empList" :key="e.id">
+                    <td>{{index+1}}</td>
+                    <td>{{e.name}}</td>
+                    <td>{{e.age}}</td>
+                    <td>{{e.gender==1?'男':'女'}}</td>
+                    <span>
+                        <td v-if="e.job==1">前端开发</td>
+                        <td v-else-if="e.job==2">后端开发</td>
+                        <td v-else-if="e.job==3">数据库开发</td>
+                        <td v-else>未知</td>
+                    </span>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module">
+        import {createApp} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+        //创建vue实例
+        createApp({
+            data() {
+                return {
+                    empList: [
+                    ]
+                    ,
+                    searchForm:{//封装用户输入的查询条件
+                        name:"",
+                        gender:"",
+                        job:""
+                    },
+                }
+            },
+            methods:{
+                search(){
+                    axios.get(`https://web-server.itheima.net/emps/list?name=${this.searchForm.name}&gender=${this.searchForm.gender}&job=${this.searchForm.job}`).then((result)=>{
+                        this.empList = result.data.data;
+                        console.log(result.data);
+                    })
+                },
+
+                clear(){
+                    this.searchForm.name="",
+                    this.searchForm.gender="",
+                    this.searchForm.job=""
+                },
+            }
+        }).mount('#container')
+    
+    </script>
+</body>
+</html>

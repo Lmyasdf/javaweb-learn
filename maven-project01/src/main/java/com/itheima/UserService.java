@@ -6,4 +6,8 @@ public class UserService {
         int currentYear = java.time.Year.now().getValue();
         return currentYear - year;
     }
+
+    public String getGender(String idCard) {
+        return idCard.substring(16, 17).equals("1") ? "女" : "男";
+    }
 }

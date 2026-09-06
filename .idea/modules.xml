@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/WebLearn.iml" filepath="$PROJECT_DIR$/.idea/WebLearn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-ai-project/maven-project01/maven-project01.iml" filepath="$PROJECT_DIR$/web-ai-project/maven-project01/maven-project01.iml" />
     </modules>
   </component>
 </project>

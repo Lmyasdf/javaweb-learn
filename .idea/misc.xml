@@ -5,6 +5,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/web-ai-project/maven-project01/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-web-quickstart/pom.xml" />
       </list>
     </option>
   </component>

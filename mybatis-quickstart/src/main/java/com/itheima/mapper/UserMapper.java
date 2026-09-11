@@ -15,7 +15,7 @@ public interface UserMapper {
     //根据id删除用户
     //#{}表示占位符，用于接收方法参数中的id值
     //#{id}表示将方法参数中的id值替换为SQL语句中的占位符
-    @Delete("delete from user where id = #{id}")//预编译
+    //@Delete("delete from user where id = #{id}")//预编译
     public Integer deleteById(Integer id);
 
 

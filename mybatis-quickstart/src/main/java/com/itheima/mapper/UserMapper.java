@@ -1,8 +1,7 @@
 package com.itheima.mapper;
 
 import com.itheima.pojo.User;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -12,4 +11,23 @@ import java.util.List;
 public interface UserMapper {
     @Select("select * from user")
     public List<User> findAll();
+
+    //根据id删除用户
+    //#{}表示占位符，用于接收方法参数中的id值
+    //#{id}表示将方法参数中的id值替换为SQL语句中的占位符
+    @Delete("delete from user where id = #{id}")//预编译
+    public Integer deleteById(Integer id);
+
+
+    //insert
+    @Insert("insert into user(id,username,password,name,age) values(#{id},#{username},#{password},#{name}, #{age})")
+    public Integer insert(User user);
+
+    //update
+    @Update("update user set username = 'zhouyu',password = '123456' where id = #{id}")
+    public void update(Integer id);
+
+    //根据id查询用户
+    @Select("select * from user where id = #{id}")
+    public User findById(Integer id);
 }

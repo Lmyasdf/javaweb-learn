@@ -30,4 +30,8 @@ public interface UserMapper {
     //根据id查询用户
     @Select("select * from user where id = #{id}")
     public User findById(Integer id);
+
+    //Param注解用于将方法参数中的值替换为SQL语句中的占位符
+    @Select("select * from user where username = #{uname} and password = #{pwd}")
+    public User findByUsername(@Param("pwd") String pwd,@Param("uname") String uname);
 }

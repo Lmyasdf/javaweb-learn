@@ -51,4 +51,10 @@ class MybatisQuickstartApplicationTests {
         User user = userMapper.findById(1001);
         System.out.println(user);
     }
-}
+
+    @Test
+    public void testFindByUsername(){
+        User user = userMapper.findByUsername("123456","zhouyu");
+        System.out.println(user);
+    }
+ }

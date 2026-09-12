@@ -9,21 +9,21 @@
         <outputRelativeToContentRoot value="true" />
         <module name="springboot-web-quickstart" />
       </profile>
-      <profile name="Annotation profile for mybatis-quickstart" enabled="true">
+      <profile name="Annotation profile for springboot-web-01" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+          <entry name="$PROJECT_DIR$/../../Maven/apache-maven-3.9.16/mvn_repo/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
         </processorPath>
-        <module name="mybatis-quickstart" />
         <module name="springboot-web-01" />
+        <module name="mybatis-quickstart" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="jdbc-demo" target="25" />
       <module name="maven-project01" target="25" />
+      <module name="tlias-web-management" target="25" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
